@@ -45,12 +45,22 @@ class _Home extends State<Home> with TickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: 320,
+                  height: 400,
                   child: ClipPath(
                       clipper: WaveClipper(),
                       clipBehavior: Clip.antiAlias,
                       child: Container(
+                        alignment: Alignment.center,
                         decoration: BoxDecoration(gradient: LinearGradient(colors: [instaRed, instaViolet])),
+                        child: Text(
+                          "INSTORY",
+                          style: TextStyle(color: Colors.white,
+                          fontFamily: "Kalam",
+                           fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.italic
+                          ),
+                          textScaleFactor: 2.2,
+                        ),
                       )),
                 ),
                 Container(
