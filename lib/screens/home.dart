@@ -42,10 +42,10 @@ class _Home extends State<Home> with TickerProviderStateMixin {
           height: MediaQuery.of(context).size.height,
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: 400,
+                  height: 320,
                   child: ClipPath(
                       clipper: WaveClipper(),
                       clipBehavior: Clip.antiAlias,
@@ -54,10 +54,12 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                       )),
                 ),
                 Container(
-                  alignment: Alignment(0.0, 0.0),
-                  margin: EdgeInsets.symmetric(horizontal: 44),
-                  child: Card(
-                    elevation: 22,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(horizontal: 50),
+                  child: Material(
+                    elevation: 10,
+                    shadowColor: Colors.grey[100],
+                    type: MaterialType.card,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(33)),
                     child: TextField(
                       controller: _controller,
@@ -108,31 +110,46 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-                profile != null
-                    ? InkWell(
-                        onTap: () {
-                          routeToProfile();
-                        },
-                        child: Hero(
-                          child: UserProfile(profile),
-                          tag: profile.id,
-                        ))
-                    : Container(),
-                fetchingStories
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("Fetching stories..."),
-                          Container(
-                            width: 18,
-                            margin: EdgeInsets.only(left: 12),
-                            height: 18,
-                            alignment: Alignment(0, 0),
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        ],
-                      )
-                    : Container(height: 40)
+                Container(
+                  height: 200,
+                  child: profile != null
+                      ? Dismissible(
+                          onDismissed: (DismissDirection dis) {
+                            setState(() {
+                              profile = null;
+                              loading = false;
+                              fetchingStories = false;
+                              _highLightsResponse = null;
+                            });
+                          },
+                          key: Key("_KEY_"),
+                          movementDuration: Duration(milliseconds: 120),
+                          child: InkWell(
+                              onTap: () {
+                                routeToProfile();
+                              },
+                              child: Hero(child: UserProfile(profile), tag: profile.id)),
+                        )
+                      : Container(),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(fetchingStories ? "Fetching stories..." : ""),
+                      fetchingStories
+                          ? Container(
+                              width: 18,
+                              margin: EdgeInsets.only(left: 12),
+                              height: 18,
+                              alignment: Alignment(0, 0),
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            )
+                          : Container()
+                    ],
+                  ),
+                )
               ]),
         ),
       ),
