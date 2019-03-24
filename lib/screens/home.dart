@@ -45,7 +45,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: 400,
+                  height: 300,
                   child: ClipPath(
                       clipper: WaveClipper(),
                       clipBehavior: Clip.antiAlias,
@@ -54,11 +54,11 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                         decoration: BoxDecoration(gradient: LinearGradient(colors: [instaRed, instaViolet])),
                         child: Text(
                           "INSTORY",
-                          style: TextStyle(color: Colors.white,
-                          fontFamily: "Kalam",
-                           fontWeight: FontWeight.normal,
-                            fontStyle: FontStyle.italic
-                          ),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "Kalam",
+                              fontWeight: FontWeight.normal,
+                              fontStyle: FontStyle.italic),
                           textScaleFactor: 2.2,
                         ),
                       )),
@@ -124,6 +124,9 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                   height: 200,
                   child: profile != null
                       ? Dismissible(
+                          background: Container(
+                            color: Colors.grey[200],
+                          ),
                           onDismissed: (DismissDirection dis) {
                             setState(() {
                               profile = null;
@@ -144,6 +147,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 12),
+                  margin: EdgeInsets.only(bottom: 6),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
