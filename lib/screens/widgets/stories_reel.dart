@@ -5,7 +5,9 @@ import 'package:stories/screens/story_details_pager.dart';
 class StoriesReel extends StatelessWidget {
   List<Items> stories;
 
-  StoriesReel(this.stories);
+  double height;
+
+  StoriesReel(this.stories, this.height);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class StoriesReel extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
           itemCount: this.stories.length,
           itemBuilder: (BuildContext context, int index) {
-            return new _StoriesReel(index, stories);
+            return new _StoriesReel(index, stories,this.height);
           }),
     );
   }
@@ -26,7 +28,9 @@ class _StoriesReel extends StatelessWidget {
   int story;
   List<Items> stories;
 
-  _StoriesReel(this.story, this.stories);
+  double height;
+
+  _StoriesReel(this.story, this.stories, this.height);
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +43,7 @@ class _StoriesReel extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => StoryDetails(story, this.stories)),
+                MaterialPageRoute(builder: (context) => StoryDetails(story, this.stories)),
               );
             },
             highlightColor: Colors.grey[300],
@@ -52,16 +55,25 @@ class _StoriesReel extends StatelessWidget {
               child: Hero(
                 transitionOnUserGestures: true,
                 tag: item.id,
-                child: Container(
-                  width: 190,
-                  height: 320,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              item.imageVersions2.candidates[5].url)),
-                      shape: BoxShape.rectangle),
+                child: new Container(
+                  width: MediaQuery.of(context).size.width/2,
+                  height: this.height,
+                  decoration: new BoxDecoration(
+                      image: new DecorationImage(
+                    fit: BoxFit.cover,
+                    alignment: FractionalOffset.center,
+                    image: new NetworkImage(item.imageVersions2.candidates[5].url
+
+                     ),
+                  )),
                 ),
+//                child: Container(
+//                  decoration: BoxDecoration(shape: BoxShape.rectangle),
+//                  child: Image.network(
+//                    item.imageVersions2.candidates[5].url,
+//                    height: double.infinity,
+//                  ),
+//                ),
               ),
             ),
           ),
