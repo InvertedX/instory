@@ -83,7 +83,7 @@ class _TrayItemState extends State<TrayItem> {
   void select(BuildContext context) async {
     final storiesBloc = BlocProvider.of<StoriesBloc>(context);
 
-    if (widget.tray.id == "_TODAY_") {
+    if (widget.tray.id == "__TODAY__") {
       storiesBloc.addStories(storiesBloc.todaysStories);
       storiesBloc.selectTray(widget.tray.id);
       return;
