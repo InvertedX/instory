@@ -27,7 +27,7 @@ A few resources to get you started if this is your first Flutter project:
 - [http](https://pub.dartlang.org/packages/http)
 - [dio](https://pub.dartlang.org/packages/dio)
 - [path_provider](https://pub.dartlang.org/packages/path_provider)
-- [path_provider](https://pub.dartlang.org/packages/permission_handler)
+- [permission_handler](https://pub.dartlang.org/packages/permission_handler)
  
 For help getting started with Flutter, view   
 [online documentation](https://flutter.io/docs), which offers tutorials, 
