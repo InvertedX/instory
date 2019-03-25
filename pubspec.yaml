@@ -1,5 +1,5 @@
 name: stories
-description: A new Flutter project.
+description:  Beautiful flutter app for downloading Instagram stories .
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -21,7 +21,6 @@ dependencies:
     sdk: flutter
   http: ^0.12.0+1
   video_player: ^0.10.0+2
-  timeago: ^2.0.10
   dio: 2.1.0
   path_provider: ^0.5.0+1
   permission_handler: '^2.2.0'
