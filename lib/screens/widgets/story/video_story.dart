@@ -76,7 +76,7 @@ class _VideoStory extends State<VideoStory> {
                     children: <Widget>[
                       FadeInImage(
                           fit: BoxFit.cover,
-                          fadeInDuration: Duration(microseconds: 100),
+                          fadeInDuration: Duration(milliseconds: 100),
                           placeholder: NetworkImage(story.imageVersions2.candidates[5].url),
                           image: NetworkImage(story.imageVersions2.candidates[2].url)),
                       Center(child: CircularProgressIndicator())

@@ -26,9 +26,8 @@ class ImageStory extends StatelessWidget {
           },
           child: FadeInImage(
             fit: BoxFit.fill,
-            fadeInDuration:Duration(milliseconds: 900),
-            fadeInCurve: ElasticInCurve(12),
-            placeholder: NetworkImage(story.imageVersions2.candidates[5].url),
+            fadeInDuration:Duration(milliseconds: 100),
+              placeholder: NetworkImage(story.imageVersions2.candidates[5].url),
             image: NetworkImage(story.imageVersions2.candidates[2].url)),
           ),
         );
