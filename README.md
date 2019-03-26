@@ -19,10 +19,6 @@
    
 ### Dependenices used
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
 - [video_player](https://pub.dartlang.org/packages/video_player)
 - [http](https://pub.dartlang.org/packages/http)
 - [dio](https://pub.dartlang.org/packages/dio)
