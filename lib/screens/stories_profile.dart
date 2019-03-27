@@ -24,11 +24,9 @@ class StoriesProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height =  MediaQuery.of(context).size.height - 120;
-    double topSection =  height/3;
+    double height = MediaQuery.of(context).size.height - 128;
+    double topSection = height / 2.7;
     double storySection = height - topSection;
-
-
     final storiesBloc = BlocProvider.of<StoriesBloc>(context);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -46,9 +44,10 @@ class StoriesProfile extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-           child: Column(
-             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-             crossAxisAlignment: CrossAxisAlignment.center,
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
                   height: topSection,
@@ -74,40 +73,41 @@ class StoriesProfile extends StatelessWidget {
                               ),
                             ),
                             Container(
-                               decoration: BoxDecoration(
+                              decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius:
                                       BorderRadius.only(topLeft: Radius.circular(32), topRight: Radius.circular(32))),
                               height: 120,
                             ),
-                            Container(child:  Hero(tag: profile.id, child: UserProfile(profile))),
+                            Container(child: Hero(tag: profile.id, child: UserProfile(profile))),
                           ],
                         ),
                       ],
                     ),
                   )),
-
               Container(
-                 height:  120,
+                  height: 124,
                   child: StreamBuilder(
                       initialData: List<Tray>(),
                       stream: storiesBloc.storiesArchive,
                       builder: (BuildContext context, AsyncSnapshot<List<Tray>> snap) {
-                        return Container( child: StoriesArchiveTray(snap.data));
+                        return Container(child: StoriesArchiveTray(snap.data));
                       })),
               Container(
                 height: storySection,
-                padding: EdgeInsets.only(top: 43),
-               decoration: BoxDecoration(
-                   color: Colors.grey[200],
-                   borderRadius: BorderRadius.only(topLeft: Radius.circular(28), topRight: Radius.circular(28))),
-               child: StreamBuilder(
-                   initialData: List<Items>(),
-                   stream: storiesBloc.stories,
-                   builder: (BuildContext context, AsyncSnapshot<List<Items>> snap) {
-                     return Container(margin: EdgeInsets.symmetric(horizontal: 2), child: StoriesReel(snap.data,storySection-60));
-                   }),
-                  ),
+                alignment: Alignment.bottomCenter,
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(28), topRight: Radius.circular(28))),
+                child: StreamBuilder(
+                    initialData: List<Items>(),
+                    stream: storiesBloc.stories,
+                    builder: (BuildContext context, AsyncSnapshot<List<Items>> snap) {
+                      return Container(
+                          margin: EdgeInsets.symmetric(horizontal: 2),
+                          child: StoriesReel(snap.data, storySection - 40));
+                    }),
+              ),
             ],
           ),
         ),
