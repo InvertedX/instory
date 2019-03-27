@@ -38,7 +38,7 @@ class _StoriesReel extends StatelessWidget {
     return Column(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(6.0),
+          padding: const EdgeInsets.only(left: 4,right: 4,top: 16),
           child: InkWell(
             onTap: () {
               Navigator.push(
@@ -56,8 +56,8 @@ class _StoriesReel extends StatelessWidget {
                 transitionOnUserGestures: true,
                 tag: item.id,
                 child: new Container(
-                  width: MediaQuery.of(context).size.width/2,
-                  height: this.height,
+                  width: MediaQuery.of(context).size.width/1.8,
+                  height: this.height > 420 ? 420 : this.height ,
                   decoration: new BoxDecoration(
                       image: new DecorationImage(
                     fit: BoxFit.cover,
@@ -67,13 +67,6 @@ class _StoriesReel extends StatelessWidget {
                      ),
                   )),
                 ),
-//                child: Container(
-//                  decoration: BoxDecoration(shape: BoxShape.rectangle),
-//                  child: Image.network(
-//                    item.imageVersions2.candidates[5].url,
-//                    height: double.infinity,
-//                  ),
-//                ),
               ),
             ),
           ),
