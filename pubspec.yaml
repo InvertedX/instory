@@ -51,9 +51,10 @@ flutter:
   - assets/
 
   fonts:
-    - family: Kalam
+    - family: MoonlightsOnTheBeach
       fonts:
-      - asset: fonts/Kalam-Regular.ttf
+      - asset: fonts/MoonlightsOnTheBeach.ttf
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
