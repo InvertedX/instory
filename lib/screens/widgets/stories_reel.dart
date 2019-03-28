@@ -56,8 +56,8 @@ class _StoriesReel extends StatelessWidget {
                 transitionOnUserGestures: true,
                 tag: item.id,
                 child: new Container(
-                  width: MediaQuery.of(context).size.width/1.8,
-                  height: this.height > 420 ? 420 : this.height ,
+                  width: MediaQuery.of(context).size.width/2,
+                  height: this.height > 430 ? 430 : this.height ,
                   decoration: new BoxDecoration(
                       image: new DecorationImage(
                     fit: BoxFit.cover,
