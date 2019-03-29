@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stories/screens/widgets/story/image_story.dart';
 import 'package:stories/screens/widgets/story/video_story.dart';
@@ -29,6 +30,7 @@ class _Story extends State<Story> {
   bool showDownloadProgress = false;
 
   _Story(this.story, this.index, this.selectedItem);
+  static const platform = const MethodChannel('stories');
 
   final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
 
@@ -154,11 +156,11 @@ class _Story extends State<Story> {
     try {
       var storage = await getExternalStorageDirectory();
 
-      await new Directory("${storage.path}/stories").create(recursive: true);
+      await new Directory("${storage.path}/Download").create(recursive: true);
       setState(() {
         showDownloadProgress = true;
       });
-      await Dio().download(url, "${storage.path}/stories/$filename", // Listen the download progress.
+      await Dio().download(url, "${storage.path}/Download/$filename", // Listen the download progress.
           onReceiveProgress: (received, total) {
         print((received / total * 100) / 100);
         setState(() {
@@ -174,6 +176,7 @@ class _Story extends State<Story> {
         backgroundColor: Colors.greenAccent[700],
       );
       _scaffoldkey.currentState.showSnackBar(snackBar);
+      platform.invokeMethod("Scan",filename);
     } catch (e) {
       print(e);
       final snackBar = SnackBar(
