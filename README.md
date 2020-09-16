@@ -37,7 +37,7 @@
  [Demo video](https://imgur.com/a/FtSxWrL)  
 
 
-### Dependenices used
+### Dependencies used
 
 - [video_player](https://pub.dartlang.org/packages/video_player)
 - [http](https://pub.dartlang.org/packages/http)
