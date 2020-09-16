@@ -1,4 +1,4 @@
-#### NOTE: No longer maintained
+### NOTE: No longer maintained
 
 # Instory 📽
 
